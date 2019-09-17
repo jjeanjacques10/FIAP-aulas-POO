@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+	<div class="container">
+		<h1>Adicionar Paciente</h1>
+		<hr />
+		<form action="adicionarpaciente" method="post">
+		  <div class="form-group">
+		    <label for="cpf">CPF</label>
+		    <input type="text" class="form-control" name="cpf" id="cpf" placeholder="CPF">
+		  </div>
+		  <div class="form-group">
+		    <label for="nome">Nome</label>
+		    <input type="text" class="form-control" name="nome" id="nome" placeholder="Nome">
+		  </div>
+		  <div class="form-group">
+		    <label for="fone">Fone</label>
+		    <input type="text" class="form-control" name="fone" id="fone" placeholder="Fone">
+		  </div>
+		  <button type="submit" value="gravar" class="btn btn-primary mb-2">Cadastrar Paciente</button>
+		</form>
+	</div>
+	
+	<div class="container">
+		<table class="table table-striped">
+		  <thead>
+		    <tr>
+		      <th scope="col">CPF</th>
+		      <th scope="col">Nome</th>
+		      <th scope="col">Fone</th>
+		    </tr>
+		  </thead>
+		  <tbody>
+		    <tr>
+		      <th scope="row">123456</th>
+		      <td>Jean</td>
+		      <td>11 39422515</td>
+		    </tr>
+		  </tbody>
+		</table>
+	</div>
+</body>
+</html>
