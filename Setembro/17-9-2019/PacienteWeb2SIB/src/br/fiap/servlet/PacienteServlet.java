@@ -1,6 +1,8 @@
 package br.fiap.servlet;
 
 import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -18,14 +20,18 @@ public class PacienteServlet extends HttpServlet {
 		super();
 	}
 
-	protected void service(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String cpf = request.getParameter("cpf");
 		String nome = request.getParameter("nome");
 		String fone = request.getParameter("fone");
 		PacienteDAO dao = new PacienteDAO();
-		dao.cadastrar(new Paciente(cpf, nome, fone));
-		response.getWriter().append(cpf + nome + fone);
+		boolean sucesso = dao.cadastrar(new Paciente(cpf, nome, fone));
+		if(sucesso) {
+			request.setAttribute("nome", nome);
+			System.out.println(nome);
+			RequestDispatcher dispatcher = request.getRequestDispatcher("mensagemSucesso.jsp");
+			dispatcher.forward(request, response);
+		}
 	}
 
 }
