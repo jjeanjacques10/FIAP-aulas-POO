@@ -7,6 +7,6 @@
 <title>Dados do sr.(a) ${nome} cadastrados com sucesso!</title>
 </head>
 <body>
-
+	<h1>Dados do sr.(a) ${nome} cadastrados com sucesso!</h1>
 </body>
 </html>

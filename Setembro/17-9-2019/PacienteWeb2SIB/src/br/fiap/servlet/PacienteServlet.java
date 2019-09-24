@@ -1,6 +1,7 @@
 package br.fiap.servlet;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -20,18 +21,33 @@ public class PacienteServlet extends HttpServlet {
 		super();
 	}
 
-	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String cpf = request.getParameter("cpf");
-		String nome = request.getParameter("nome");
-		String fone = request.getParameter("fone");
+	protected void service(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		RequestDispatcher dispatcher;
 		PacienteDAO dao = new PacienteDAO();
-		boolean sucesso = dao.cadastrar(new Paciente(cpf, nome, fone));
-		if(sucesso) {
-			request.setAttribute("nome", nome);
-			System.out.println(nome);
-			RequestDispatcher dispatcher = request.getRequestDispatcher("mensagemSucesso.jsp");
+		String botao = request.getParameter("botao");
+
+		if (botao.equalsIgnoreCase("listar")) {
+			List<Paciente> lista = dao.listarPaciente();
+			request.setAttribute("lista", lista);
+		
+			dispatcher = request.getRequestDispatcher("listar.jsp");
 			dispatcher.forward(request, response);
+			
+		} else if (botao.equalsIgnoreCase("cadastrar")) {
+
+			String cpf = request.getParameter("cpf");
+			String nome = request.getParameter("nome");
+			String fone = request.getParameter("fone");
+			boolean sucesso = dao.cadastrar(new Paciente(cpf, nome, fone));
+	
+			if (sucesso) {
+				request.setAttribute("nome", nome);
+				dispatcher = request.getRequestDispatcher("mensagemSucesso.jsp");
+				dispatcher.forward(request, response);
+			}
 		}
+
 	}
 
 }

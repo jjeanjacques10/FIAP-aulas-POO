@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.JOptionPane;
 
@@ -36,5 +38,22 @@ public class PacienteDAO {
 			e.printStackTrace();
 		}
 		return sucesso;
+	}
+	
+	public List<Paciente> listarPaciente(){
+		List<Paciente> lista = new ArrayList<Paciente>();
+		
+		sql = "SELECT * FROM JAVA_PACIENTE";
+		try {
+			ps = connection.prepareStatement(sql);
+			rs = ps.executeQuery();
+			while (rs.next()) {
+				lista.add(new Paciente(rs.getString("cpf"),rs.getString("nome"), rs.getString("fone")));
+			}
+		}catch(SQLException e) {
+			System.out.println("Erro ao buscar os paciente\n" + e);
+		}
+		
+		return lista;
 	}
 }
