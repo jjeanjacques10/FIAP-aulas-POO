@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Index do meu programa em Java</title>
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+	crossorigin="anonymous">
+</head>
+<body>
+	<div class="container">
+		<h1>Adicionar Paciente</h1>
+		<hr />
+		<form action="adicionarpaciente" method="POST">
+			<div class="form-group">
+				<label for="cpf">CPF</label> <input type="text" class="form-control"
+					name="cpf" id="cpf" placeholder="CPF">
+			</div>
+			<div class="form-group">
+				<label for="nome">Nome</label> <input type="text"
+					class="form-control" name="nome" id="nome" placeholder="Nome">
+			</div>
+			<div class="form-group">
+				<label for="fone">Fone</label> <input type="text"
+					class="form-control" name="fone" id="fone" placeholder="Fone">
+			</div>
+			<button type="submit" class="btn btn-primary mb-2"
+				value="cadastrar" name="botao">Cadastrar Paciente</button>
+			<button type="submit" class="btn btn-primary mb-2"
+				value="listar" name="botao">Listar</button>
+		</form>
+	</div>
+</body>
+</html>
